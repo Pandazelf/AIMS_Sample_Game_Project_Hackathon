@@ -132,48 +132,31 @@ function canMove(x, y) {
 
 // Check if player is touching an item
 function checkItemCollection() {
+  // Don't collect items if backpack is full
+  if (collectedItems.length >= 8) {
+    return;
+  }
+
   const tileX = Math.floor((player.x + player.width / 2) / tileSize);
   const tileY = Math.floor((player.y + player.height / 2) / tileSize);
 
   const tileValue = houseMap[tileY][tileX];
   if (tileValue >= 2 && tileValue <= 15) {
     const itemId = tileValue;
-    collectItemById(itemId);
-  }
-}
-
-// Collect item by ID (calls function from game.js)
-function collectItemById(itemId) {
-  const item = items.find((i) => i.id === itemId);
-  if (!item) return;
-
-  if (collectedItems.find((i) => i.id === item.id)) return;
-
-  if (collectedItems.length >= 8) {
-    // Flash message on canvas
-    return;
-  }
-
-  collectedItems.push(item);
-
-  // Remove item from map
-  for (let y = 0; y < houseMap.length; y++) {
-    for (let x = 0; x < houseMap[y].length; x++) {
-      if (houseMap[y][x] === itemId) {
-        houseMap[y][x] = 0;
+    // Find the item and call game.js collectItem function
+    const item = items.find((i) => i.id === itemId);
+    if (item && !collectedItems.find((i) => i.id === item.id)) {
+      // Remove item from map before collecting
+      for (let y = 0; y < houseMap.length; y++) {
+        for (let x = 0; x < houseMap[y].length; x++) {
+          if (houseMap[y][x] === itemId) {
+            houseMap[y][x] = 0;
+          }
+        }
       }
+      // Call the main collectItem function from game.js
+      collectItem(item);
     }
-  }
-
-  document.getElementById("backpack-count").textContent = collectedItems.length;
-  updateBackpackDisplay();
-
-  if (collectedItems.length === 8) {
-    setTimeout(() => {
-      if (confirm("🎒 Backpack full! Ready to face the flood?")) {
-        endPreparation();
-      }
-    }, 300);
   }
 }
 

@@ -1135,21 +1135,24 @@ function collectItem(item) {
   if (collectedItems.find((i) => i.id === item.id)) return;
 
   if (collectedItems.length >= 8) {
-    alert("🎒 Backpack is full! You can only carry 8 items.");
     return;
   }
 
   collectedItems.push(item);
-  document.getElementById(`item-${item.id}`).classList.add("collected");
+  const itemCard = document.getElementById(`item-${item.id}`);
+  if (itemCard) {
+    itemCard.classList.add("collected");
+  }
   document.getElementById("backpack-count").textContent = collectedItems.length;
   updateBackpackDisplay();
 
   if (collectedItems.length === 8) {
-    setTimeout(() => {
-      if (confirm("🎒 Backpack full! Ready to face the flood?")) {
-        endPreparation();
-      }
-    }, 300);
+    // Enable the "Start Flood" button
+    const startBtn = document.getElementById("start-flood-btn");
+    if (startBtn) {
+      startBtn.disabled = false;
+      startBtn.classList.add("ready");
+    }
   }
 }
 
