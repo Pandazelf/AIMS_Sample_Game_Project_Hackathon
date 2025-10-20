@@ -1,0 +1,65 @@
+=== GAME CONCEPT DEVELOPMENT PROMPTS ===
+
+I'm creating a web-based game for a hackathon about student mental health 
+and exam stress in universities. The game should be:
+- Simple (HTML/CSS/JavaScript only, runs in browser)
+- Educational (teaches healthy coping strategies)
+- Fun to play
+- 2D graphics
+
+Suggest 3 different game concepts:
+1. A card-based decision game
+2. A resource management game
+3. A story-based interactive game
+
+For each, describe:
+- Core gameplay mechanic
+- How it connects to mental health education
+- What players learn
+
+=== GAME DESIGN REFINEMENTS ===
+
+Phase 2 Enhancement Request:
+"From the basic game at the moment, I found some features to improve it. The seconds phrase need to add some more features for it. First, make more like 20 scenarios in total and choose random 10 scenarios for each gameplay, also make more options available for each scenario."
+
+Response: Expanded from 5 scenarios to 20 scenarios with 3-4 choice options, random selection of 10 per game
+
+Inventory System Enhancement Request:
+"I want to improve the item system. At the moment it just based on items to consider its a safe choice or not. I want to make the choices are available based on the current items you have and also make the some items lose based on the choices such as choosing food you brought will make that item disapear from inventory and wont be available for the remain scenarios."
+
+Response: Implemented dynamic inventory system with consumable/non-consumable items
+
+Rating System Enhancement Request:
+"For the phrase 3. Can you make the total rating of 5 stars instead of 3 stars? 5 stars must score 10/10."
+
+Response: Upgraded from 3-star to 5-star rating system
+
+=== EDUCATIONAL FOCUS ===
+
+Game Context:
+"Vietnam Flood Awareness Game - Focus on Mekong Delta flood preparedness, real-world scenarios based on 2024 flood disasters, educational flood safety for Vietnamese communities"
+
+Target Learning Outcomes:
+- Essential emergency supplies identification
+- Evacuation timing and procedures
+- Water contamination risks
+- Community solidarity importance
+- Resource management under crisis
+- Medical emergency response
+- Rescue signaling techniques
+- Psychological resilience during disasters
+
+=== GAME MECHANICS DECISIONS ===
+
+Core Mechanics:
+- 60-second item collection phase (tension building)
+- 8-item backpack limit (forces prioritization)
+- 14 available items (8 consumable, 6 non-consumable)
+- 10 random scenarios per playthrough (from pool of 20)
+- 3-4 choices per scenario (varying item requirements)
+- Dynamic choice availability based on inventory
+- Real-time item consumption during gameplay
+- 5-star rating based on safe decisions (10/10 = perfect)
+
+Educational Philosophy:
+"Every choice should teach a real flood safety lesson. Consequences should be realistic but not preachy. Players learn through experiencing outcomes."
