@@ -1,0 +1,184 @@
+=== CODE GENERATION PROMPTS ===
+
+Initial Game Structure Request:
+I like option 2. Let's develop a resource game 
+about flood preparedness and climate resilience in Vietnam . The game should have 3 phrases:
+
+Phase 1: Weather Warning (60 seconds)
+- Single screen: Your house interior (simple 2D illustration)
+- Click-to-collect: 10-12 items scattered around
+- Countdown timer: Creates urgency like 60 Seconds
+- Drag to backpack: Simple drag-and-drop or click-to-add
+- Limited capacity: Can only carry 8 items (forces prioritization)
+
+Phase 2: The Flood Arrives (Event Cards)
+- 5-7 scenario cards appear one by one
+- Each card presents a situation
+- Check inventory: Your choices depend on what you grabbed
+- Simple consequences: Immediate feedback
+
+Phase 3: Results Screen
+- Score breakdown: Family safety, health, supplies remaining
+- Educational recap
+- Star rating: 1-3 stars based on decisions
+- Replay button: Try again with different choices"
+
+Response: Generated complete HTML/CSS/JavaScript starter template with:
+- 3-phase game structure
+- Menu, instructions, preparation, scenarios, results screens
+- Timer system
+- Item collection mechanic
+- Basic scenario system with 5 scenarios
+- 3-star rating system
+
+HTML Structure Generation:
+"Create HTML structure for a 3-phase flood survival game with menu, preparation, scenarios, and results screens"
+
+CSS Styling Generation:
+"Generate CSS styling for a Vietnam flood game with blue water theme, mobile-responsive design, and smooth transitions"
+
+JavaScript Game Logic - Phase 1:
+"Write JavaScript game logic for:
+- 60-second countdown timer
+- Item collection system (max 8 items)
+- Click-to-collect mechanics
+- Real-time backpack display updates"
+
+JavaScript Game Logic - Phase 2:
+"Create scenario decision system:
+- Display random scenarios from pool
+- Show available choices
+- Check player inventory
+- Provide immediate feedback
+- Track safe/risky/danger decisions"
+
+JavaScript Game Logic - Phase 3:
+"Implement results screen:
+- Calculate final score
+- Determine star rating
+- Display lessons learned
+- Show remaining items
+- Replay functionality"
+
+=== FEATURE ENHANCEMENTS ===
+
+Scenario Expansion:
+"Create 15 more flood scenarios for a Vietnam disaster preparedness game.
+Focus on:
+- Mekong Delta specific challenges
+- Various emergency situations
+- 3-4 choices per scenario
+- Mix of item-required and no-item choices"
+
+Dynamic Inventory System:
+"Implement item consumption system:
+- Items have consumable/non-consumable property
+- Consumable items removed after use
+- Non-consumable items stay in inventory
+- Update backpack display in real-time
+- Check item availability before showing choices"
+
+Choice Availability Logic:
+"Create dynamic choice system:
+- Check if player has required items
+- Disable choices if items missing
+- Show 'Missing: [item]' indicator
+- Always keep at least 2 choices available (no-item options)"
+
+5-Star Rating System:
+"Upgrade rating from 3 stars to 5 stars:
+- 5 stars: 10/10 safe decisions (perfect)
+- 4 stars: 7-9/10 safe decisions (good)
+- 3 stars: 5-6/10 safe decisions (average)
+- 2 stars: 3-4/10 safe decisions (poor)
+- 1 star: 0-2/10 safe decisions (disaster)"
+
+CSS Rating Banners:
+"Create 5 distinct CSS banner classes:
+- excellent: green gradient
+- good: blue gradient
+- average: yellow gradient
+- poor: light red gradient
+- disaster: dark red gradient with pulse animation"
+
+=== CODE STRUCTURE ===
+
+Game State Management:
+let collectedItems = [];
+let timeLeft = 60;
+let currentScenarioIndex = 0;
+let selectedScenarios = [];
+let safeCount = 0;
+let riskyCount = 0;
+let dangerCount = 0;
+let lessons = [];
+
+Item Data Structure:
+const items = [
+    { 
+        id: number,
+        name: string,
+        vn: string (Vietnamese translation),
+        icon: emoji,
+        points: number,
+        helps: array of strings (what situations this helps with),
+        consumable: boolean
+    }
+];
+
+Scenario Data Structure:
+const allScenarios = [
+    {
+        title: string,
+        text: string (scenario description),
+        icon: emoji,
+        choices: [
+            {
+                text: string (choice description),
+                needs: array of strings (required item capabilities),
+                consumes: array of strings (items used up),
+                outcome: "safe" | "risky" | "danger",
+                feedback: string (immediate feedback message),
+                lesson: string (educational takeaway)
+            }
+        ]
+    }
+];
+
+=== ALGORITHM IMPLEMENTATIONS ===
+
+Random Scenario Selection:
+"Shuffle all scenarios and select first 10"
+function selectRandomScenarios() {
+    const shuffled = [...allScenarios].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 10);
+}
+
+Item Consumption Logic:
+"Find item in inventory by capability, check if consumable, remove if yes"
+if (choice.consumes && choice.consumes.length > 0) {
+    choice.consumes.forEach(consumeNeed => {
+        const itemIndex = collectedItems.findIndex(item => item.helps.includes(consumeNeed));
+        if (itemIndex !== -1) {
+            const consumedItem = collectedItems[itemIndex];
+            const originalItem = items.find(it => it.id === consumedItem.id);
+            if (originalItem && originalItem.consumable) {
+                collectedItems.splice(itemIndex, 1);
+            }
+        }
+    });
+}
+
+Choice Availability Check:
+"Verify player has all required item capabilities"
+hasRequiredItems = choice.needs.every(need => 
+    collectedItems.some(item => item.helps.includes(need))
+);
+
+Rating Calculation:
+"Determine star rating based on safe decision count"
+if (safeCount === 10) return 5 stars;
+else if (safeCount >= 7) return 4 stars;
+else if (safeCount >= 5) return 3 stars;
+else if (safeCount >= 3) return 2 stars;
+else return 1 star;
