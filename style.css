@@ -496,6 +496,36 @@ h2 {
     flex: 1;
 }
 
+/* Disabled choice styling */
+.choice-btn.disabled-choice {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+.choice-btn.disabled-choice:hover {
+    background: #f5f5f5;
+    transform: none;
+    color: #333;
+}
+
+.choice-requirement {
+    display: block;
+    font-size: 0.85em;
+    color: #c92a2a;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.choice-consume {
+    display: block;
+    font-size: 0.85em;
+    color: #e67700;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
 .scenario-feedback {
     margin-top: 20px;
     padding: 25px;
@@ -528,40 +558,104 @@ h2 {
     border: 3px solid #e53935;
 }
 
-/* Phase 3: Results */
+/* Phase 3: Results - 5 Distinct Banner Classes */
 .result-banner {
-    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
     padding: 40px;
     border-radius: 20px;
     text-align: center;
     margin: 30px 0;
-    border: 3px solid #1a4d6d;
+    border: 3px solid;
 }
 
+/* 5 STARS - EXCELLENT */
 .result-banner.excellent {
-    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
-    border-color: #4caf50;
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border-color: #28a745;
 }
 
+.result-banner.excellent .stars,
+.result-banner.excellent .rating-text,
+.result-banner.excellent .result-message {
+    color: #155724;
+}
+
+/* 4 STARS - GOOD */
 .result-banner.good {
-    background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%);
-    border-color: #fbc02d;
+    background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
+    border-color: #17a2b8;
 }
 
+.result-banner.good .stars,
+.result-banner.good .rating-text,
+.result-banner.good .result-message {
+    color: #0c5460;
+}
+
+/* 3 STARS - AVERAGE */
+.result-banner.average {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border-color: #ffc107;
+}
+
+.result-banner.average .stars,
+.result-banner.average .rating-text,
+.result-banner.average .result-message {
+    color: #856404;
+}
+
+/* 2 STARS - POOR */
 .result-banner.poor {
-    background: linear-gradient(135deg, #ffcdd2 0%, #ef9a9a 100%);
-    border-color: #e53935;
+    background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+    border-color: #dc3545;
 }
 
+.result-banner.poor .stars,
+.result-banner.poor .rating-text,
+.result-banner.poor .result-message {
+    color: #721c24;
+}
+
+/* 1 STAR - DISASTER */
+.result-banner.disaster {
+    background: linear-gradient(135deg, #f8d7da 0%, #e74c3c 100%);
+    border-color: #c0392b;
+    box-shadow: 0 0 20px rgba(192, 57, 43, 0.5);
+    animation: pulse-danger 2s infinite;
+}
+
+.result-banner.disaster .stars,
+.result-banner.disaster .rating-text,
+.result-banner.disaster .result-message {
+    color: #5a0a0a;
+    font-weight: bold;
+}
+
+@keyframes pulse-danger {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* Stars styling */
 .stars {
     font-size: 4em;
     margin-bottom: 20px;
 }
 
-.result-message {
-    font-size: 1.5em;
+/* Rating text styling */
+.rating-text {
+    font-size: 2em;
     font-weight: bold;
-    color: #1a4d6d;
+    margin: 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Result message styling */
+.result-message {
+    font-size: 1.3em;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-top: 20px;
 }
 
 .score-breakdown {
@@ -596,6 +690,37 @@ h2 {
     font-size: 2em;
     font-weight: bold;
     color: #1a4d6d;
+}
+
+/* Remaining items in results */
+.remaining-items-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.remaining-items-list span {
+    background: white;
+    border: 2px solid #4caf50;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.95em;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+#remaining-items {
+    background: #e7f5ff;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 25px 0;
+    border-left: 5px solid #1a4d6d;
+}
+
+#remaining-items h4 {
+    color: #1a4d6d;
+    margin-bottom: 10px;
 }
 
 .lessons-learned {

@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mekong Guardian - Flood Survival Game</title>
+    <title>Flood Ready - Flood Survival Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Menu Screen -->
     <div id="menu-screen" class="screen active">
         <div class="container">
-            <h1>🌊 MEKONG GUARDIAN</h1>
-            <h2>Người Bảo Vệ Mekong</h2>
+            <h1>🌊 Flood Ready</h1>
             <p class="tagline">Can You Survive The Flood?</p>
             
             <div class="game-preview">
                 <div class="preview-item">⏰ 60 seconds to prepare</div>
                 <div class="preview-item">🎒 Choose 8 essential items</div>
-                <div class="preview-item">🌊 Survive 5 flood scenarios</div>
+                <div class="preview-item">🌊 Survive 10 flood scenarios</div>
             </div>
 
             <button onclick="showInstructions()" class="btn-primary">Bắt Đầu / Start Game</button>
@@ -57,8 +56,8 @@
             <div class="instruction-step">
                 <div class="step-number">2</div>
                 <div class="step-content">
-                    <h3>🌊 Phase 2: Flood Crisis (5 scenarios)</h3>
-                    <p>Face 5 dangerous flood situations.</p>
+                    <h3>🌊 Phase 2: Flood Crisis (10 from 20 different scenarios)</h3>
+                    <p>Face 10 dangerous flood situations.</p>
                     <p><strong>Make decisions</strong> based on the items you collected.</p>
                     <p class="tip">💡 The right items help you make safe choices!</p>
                 </div>
@@ -114,7 +113,7 @@
     <div id="scenario-screen" class="screen">
         <div class="game-container">
             <div class="scenario-progress">
-                Scenario <span id="scenario-number">1</span> of 5
+                Scenario <span id="scenario-number">1</span> of 10
             </div>
 
             <div class="scenario-card">
@@ -150,9 +149,9 @@
             
             <div class="result-banner" id="result-banner">
                 <div class="stars" id="stars"></div>
+                <div class="rating-text" id="rating-text"></div>  <!-- ADD THIS LINE -->
                 <div class="result-message" id="result-message"></div>
             </div>
-
             <div class="score-breakdown">
                 <div class="score-item">
                     <div class="score-icon">✅</div>
@@ -176,6 +175,8 @@
                     </div>
                 </div>
             </div>
+
+            <div id="remaining-items"></div>
 
             <div class="lessons-learned">
                 <h3>💡 What You Learned / Bạn Đã Học</h3>
